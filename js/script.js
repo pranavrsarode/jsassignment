@@ -112,3 +112,47 @@ console.log("Space between every instance of a lower character followed immediat
 console.log(insertWhitespace("SheWalksToTheBeach"));
 console.log(insertWhitespace("MarvinTalksTooMuch"));
 console.log(insertWhitespace("TheGreatestUpsetInHistory"));
+
+/*
+5. Create a function that returns all pairs of numbers in an array that sum to a target.
+Sort the pairs in ascending order with respect to the smaller number, 
+then order each pair in this order: [smaller, larger].
+Examples
+allPairs([2, 4, 5, 3], 7) ➞ [[2, 5], [3, 4]]
+// 2 + 5 = 7, 3 + 4 = 7
+allPairs([5, 3, 9, 2, 1], 3) ➞ [[1, 2]]
+allPairs([4, 5, 1, 3, 6, 8], 9) ➞ [[1, 8], [3, 6], [4, 5]]
+// Sorted: 1 < 3 < 4; each pair is ordered [smaller, larger]
+*/
+
+function allPairs(arr, target){
+    let result = [];
+    arr.sort();
+    for(let i = 0; i<arr.length; i++){
+        for (let j = i+1; j < arr.length; j++) {
+            if((arr[i]+arr[j]) === target){
+                result.push([arr[i], arr[j]]);
+            }
+        }
+    }
+    return result;
+}
+function allPairsSingleloop(arr, target){
+    let result = [];
+    arr.sort();
+    for(let i = 0; i<arr.length; i++){
+        if(arr.slice(i).indexOf(target - arr[i]) !== -1){
+            result.push([arr[i], target - arr[i]]);
+        }
+    }
+    return result;
+}
+console.log("Function that returns all pairs of numbers in an array that sum to a target");
+console.log(allPairs([2, 4, 5, 3], 7));
+console.log(allPairs([5, 3, 9, 2, 1], 3));
+console.log(allPairs([4, 5, 1, 3, 6, 8], 9));
+console.log("Function that returns all pairs of numbers in an array that sum to a target, Single loop");
+console.log(allPairsSingleloop([2, 4, 5, 3], 7));
+console.log(allPairsSingleloop([5, 3, 9, 2, 1], 3));
+console.log(allPairsSingleloop([4, 5, 1, 3, 6, 8], 9));
+
