@@ -1,15 +1,13 @@
 /*
-
-Print Fibonacci series n numbers,
- n is input 
- Example: 
- fib(0) = 0 
- fib(1) = 0 
- fib(5) = 0, 1, 1, 2, 3 
- fib(8) = 0, 1, 1, 2, 3, 5, 8, 13
+1. Print Fibonacci series n numbers, n is input
+Example:
+fib(0) = 0
+fib(1) = 1
+fib(5) = 0, 1, 1, 2, 3
+fib(8) = 0, 1, 1, 2, 3, 5, 8, 13
  */ 
 
- function fib(num) {
+function fib(num) {
     let num1 = 0;
     let num2 = 1;
     let sum;
@@ -33,24 +31,22 @@ Print Fibonacci series n numbers,
         return ansArr;
     }
 }
-/*
+console.log("Print Fibonacci series n numbers");
 console.log(fib(0));
 console.log(fib(1));
 console.log(fib(5));
 console.log(fib(8));
-*/
-
 
 
 /*
-Given a positive integer, n. Find the factorial of n.
+2. Given a positive integer, n. Find the factorial of n.
 Examples :
 Input: n = 5
 Output: 120
 Explanation: 5*4*3*2*1 = 120
 Input: n = 4
 Output: 24
-Explanation: 4*3*2*1 = 24
+Explanation: 4*3*2*1 = 24 
 */
 
 function factorial(n) { 
@@ -61,9 +57,9 @@ function factorial(n) {
         res = res * i; 
     return res; 
 }
-let n = 5; 
-console.log(factorial(n));
-
+console.log("Print Fibonacci series n numbers");
+console.log(factorial(5));
+console.log(factorial(4));
 
 
 /*
@@ -90,4 +86,20 @@ function lcm(a, b)
 // Driver program to test above function 
  
 let a = 15, b = 20; 
-console.log("LCM of " + a + " and "+ b + " is " + lcm(a, b));
+//console.log("LCM of " + a + " and "+ b + " is " + lcm(a, b));
+
+
+/*
+Write a function that inserts a white space between every instance of a lower character followed immediately by an upper character.
+Examples
+insertWhitespace("SheWalksToTheBeach") ➞ "She Walks To The Beach"
+insertWhitespace("MarvinTalksTooMuch") ➞ "Marvin Talks Too Much"
+insertWhitespace("TheGreatestUpsetInHistory") ➞ "The Greatest Upset In History"
+*/
+
+function insertSpace(str) {
+    let result = insertSpace("SheWalksToTheBeach");
+    return str.replace(/([a-z])([A-Z])/g, '$1 $2');
+    console.log(result);
+}
+insertSpace(str);
