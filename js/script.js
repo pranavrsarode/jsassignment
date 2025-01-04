@@ -62,32 +62,5 @@ function factorial(n) {
     return res; 
 }
 let n = 5; 
-//console.log(factorial(n));
+console.log(factorial(n));
 
-
-
-/*
-Write a function that returns the least common multiple (LCM) of two integers.
-Examples
-lcm(9, 18) ➞ 18
-lcm(8, 5) ➞ 40
-lcm(17, 11) ➞ 187
-*/
-
-function gcd(a, b) 
-{ 
-if (b == 0) 
-    return a; 
-return gcd(b, a % b); 
-} 
-
-// Function to return LCM of two numbers 
-function lcm(a, b) 
-{ 
-    return (a / gcd(a, b)) * b; 
-} 
-
-// Driver program to test above function 
- 
-let a = 15, b = 20; 
-console.log("LCM of " + a + " and "+ b + " is " + lcm(a, b));
