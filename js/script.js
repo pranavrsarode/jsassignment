@@ -203,4 +203,27 @@ console.log("Return the sorted sentence");
 console.log(reArrange("is2 Thi1s T4est 3a"));
 console.log(reArrange("4of Fo1r pe6ople g3ood th5e the2"));
 console.log(reArrange(" "));
+
+
+/*
+8.Create a function that returns any of the items you can afford in the store with the money you have in your wallet. 
+Sort the list in alphabetical order. 
+Examples
+itemsPurchased({Water: "$1", Bread: "$3", TV: "$1,000", Fertilizer: "$20" }, "$300") ➞ ["Bread", "Fertilizer", "Water"]
+itemsPurchased({ Apple: "$4", Honey: "$3", Fan: "$14", Bananas: "$4", Pan: "$100", Spoon: "$2"  }, "$100") ➞ ["Apple", "Bananas", "Fan", "Honey", "Pan", "Spoon"]
+itemsPurchased({Phone: "$999", Speakers: "$300", Laptop: "$5,000", PC: "$1200"}, "$1") ➞ "Nothing"
+*/
+
+function itemsPurchased(storeItems,walletmoney){
+    let itemsPurchased = [];
+    let strItms = Object.entries(storeItems);
+    console.log(strItms);
+    for(let item of strItms){
         
+    }
+    return itemsPurchased;
+}
+console.log("Sort the list in alphabetical order. ");
+console.log(itemsPurchased({Water: "$1", Bread: "$3", TV: "$1,000", Fertilizer: "$20" }, "$300"));
+//console.log(itemsPurchased({ Apple: "$4", Honey: "$3", Fan: "$14", Bananas: "$4", Pan: "$100", Spoon: "$2"  }, "$100"));
+//console.log(itemsPurchased({Phone: "$999", Speakers: "$300", Laptop: "$5,000", PC: "$1200"}, "$1"));
