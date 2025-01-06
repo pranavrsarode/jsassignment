@@ -156,3 +156,27 @@ console.log(allPairsSingleloop([2, 4, 5, 3], 7));
 console.log(allPairsSingleloop([5, 3, 9, 2, 1], 3));
 console.log(allPairsSingleloop([4, 5, 1, 3, 6, 8], 9));
 
+
+/*
+6.Sort numbers in ascending and descending order
+Exaamples
+sortNumsAscending([1, 2, 10, 50, 5]) ➞ [1, 2, 5, 10, 50]
+sortNumsAscending([80, 29, 4, -95, -24, 85]) ➞ [-95, -24, 4, 29, 80, 85]
+sortNumsDescending([1, 2, 10, 50, 5]) ➞ [50, 10, 5, 2, 1]
+sortNumsDescending([80, 29, 4, -95, -24, 85]) ➞ [85, 80, 29, 4, -24, -95]
+*/
+
+function sortNumsAscending(arr){
+    return arr.sort((a, b) => a - b);
+}
+console.log("Sorted numbers in ascending order");
+console.log(sortNumsAscending([1, 2, 10, 50, 5]));
+console.log(sortNumsAscending([80, 29, 4, -95, -24, 85]));
+
+
+function sortNumsDescending(arr){
+    return arr.sort((a, b) => b - a);
+}
+console.log("Sorted numbers in descending order");
+console.log(sortNumsDescending([1, 2, 10, 50, 5]));
+console.log(sortNumsDescending([80, 29, 4, -95, -24, 85]));
