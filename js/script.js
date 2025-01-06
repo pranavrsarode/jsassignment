@@ -180,3 +180,27 @@ function sortNumsDescending(arr){
 console.log("Sorted numbers in descending order");
 console.log(sortNumsDescending([1, 2, 10, 50, 5]));
 console.log(sortNumsDescending([80, 29, 4, -95, -24, 85]));
+
+
+/*
+7. Given a sentence with numbers representing a word's location embedded within each word, return the sorted sentence.
+Examples
+rearrange("is2 Thi1s T4est 3a") ➞ "This is a Test"
+rearrange("4of Fo1r pe6ople g3ood th5e the2") ➞ "For the good of the people"
+rearrange(" ") ➞ ""
+*/
+
+function reArrange(sentence){
+    let arr = sentence.trim().split(" ");
+    arr.sort((a, b) => {
+      return (
+        parseInt(a.replace(/[^0-9]/g, "")) - parseInt(b.replace(/[^0-9]x/g, ""))
+      );
+    });
+    return arr.map((a) => a.replace(/[0-9]/g, "")).join(" ");
+}
+console.log("Return the sorted sentence");
+console.log(reArrange("is2 Thi1s T4est 3a"));
+console.log(reArrange("4of Fo1r pe6ople g3ood th5e the2"));
+console.log(reArrange(" "));
+        
