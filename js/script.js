@@ -212,18 +212,33 @@ Examples
 itemsPurchased({Water: "$1", Bread: "$3", TV: "$1,000", Fertilizer: "$20" }, "$300") ➞ ["Bread", "Fertilizer", "Water"]
 itemsPurchased({ Apple: "$4", Honey: "$3", Fan: "$14", Bananas: "$4", Pan: "$100", Spoon: "$2"  }, "$100") ➞ ["Apple", "Bananas", "Fan", "Honey", "Pan", "Spoon"]
 itemsPurchased({Phone: "$999", Speakers: "$300", Laptop: "$5,000", PC: "$1200"}, "$1") ➞ "Nothing"
+let storeItems = {
+    Water: "$1", 
+    Bread: "$3", 
+    TV: "$1,000", 
+    Fertilizer: "$20" 
+};
+let storeItems = {
+    key: "value", 
+    key1: "value"
+};
+storeItems.Bread;
 */
 
 function itemsPurchased(storeItems,walletmoney){
-    let itemsPurchased = [];
-    let strItms = Object.entries(storeItems);
-    console.log(strItms);
-    for(let item of strItms){
-        
+    let balance = Number(walletmoney.replace(/[^0-9.-]+/g,""));
+    let affordable = [];
+    for (let key in storeItems) {
+        value = storeItems[key];
+        let digitalAmnt = Number(value.replace(/[^0-9.-]+/g,""));
+        if(digitalAmnt <= balance){
+            affordable.push(key);
+        }
     }
-    return itemsPurchased;
+    return affordable.length?affordable:"Nothing";
 }
 console.log("Sort the list in alphabetical order. ");
 console.log(itemsPurchased({Water: "$1", Bread: "$3", TV: "$1,000", Fertilizer: "$20" }, "$300"));
-//console.log(itemsPurchased({ Apple: "$4", Honey: "$3", Fan: "$14", Bananas: "$4", Pan: "$100", Spoon: "$2"  }, "$100"));
-//console.log(itemsPurchased({Phone: "$999", Speakers: "$300", Laptop: "$5,000", PC: "$1200"}, "$1"));
+console.log(itemsPurchased({ Apple: "$4", Honey: "$3", Fan: "$14", Bananas: "$4", Pan: "$100", Spoon: "$2"  }, "$100"));
+console.log(itemsPurchased({Phone: "$999", Speakers: "$300", Laptop: "$5,000", PC: "$1200"}, "$1"));
+
