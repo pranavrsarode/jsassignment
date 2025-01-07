@@ -242,3 +242,34 @@ console.log(itemsPurchased({Water: "$1", Bread: "$3", TV: "$1,000", Fertilizer: 
 console.log(itemsPurchased({ Apple: "$4", Honey: "$3", Fan: "$14", Bananas: "$4", Pan: "$100", Spoon: "$2"  }, "$100"));
 console.log(itemsPurchased({Phone: "$999", Speakers: "$300", Laptop: "$5,000", PC: "$1200"}, "$1"));
 
+
+/* 
+9.Write a function that retrieves the top 3 longest words of a newspaper headline and transforms them into hashtags.
+If multiple words tie for the same length, retrieve the word that occurs first.
+Examples
+getHashTags("How the Avocado Became the Fruit of the Global Trade")
+➞ ["#avocado", "#became", "#global"]
+getHashTags("Why You Will Probably Pay More for Your Christmas Tree This Year")
+➞ ["#christmas", "#probably", "#will"]
+getHashTags("Hey Parents, Surprise, Fruit Juice Is Not Fruit")
+➞ ["#surprise", "#parents", "#fruit"]
+getHashTags("Visualizing Science")
+➞ ["#visualizing", "#science"]
+*/
+
+
+
+function getHashTags(str) {
+    let strArr = str
+      .toLowerCase()
+      .replace(/[^a-z ]/gi, "")
+      .split(" ")
+      .sort((a, b) => b.length - a.length)
+      .map((word) => "#" + word);
+    return strArr.splice(0, 3);
+}
+console.log("Top 3 longest words of a newspaper headline")
+console.log(getHashTags("How the Avocado Became the Fruit of the Global Trade"));
+console.log(getHashTags("Why You Will Probably Pay More for Your Christmas Tree This Year"));
+console.log(getHashTags("Hey Parents, Surprise, Fruit Juice Is Not Fruit"));
+
