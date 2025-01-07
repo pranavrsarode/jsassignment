@@ -192,17 +192,19 @@ rearrange(" ") ➞ ""
 
 function reArrange(sentence){
     let arr = sentence.trim().split(" ");
-    arr.sort((a, b) => {
-      return (
-        parseInt(a.replace(/[^0-9]/g, "")) - parseInt(b.replace(/[^0-9]x/g, ""))
-      );
+    let sortedStr = [];
+    arr.forEach(str => {
+        let position = str.match(/(\d+)/);
+        if(position){
+            sortedStr[position[0]-1] = str.replace(/[0-9]/g, "");
+        }
     });
-    return arr.map((a) => a.replace(/[0-9]/g, "")).join(" ");
+    return sortedStr.join(" ");
 }
 console.log("Return the sorted sentence");
 console.log(reArrange("is2 Thi1s T4est 3a"));
 console.log(reArrange("4of Fo1r pe6ople g3ood th5e the2"));
-console.log(reArrange(" "));
+console.log(reArrange("4of the2 Fo1r pe6ople g3ood th5e "));
 
 
 /*
@@ -256,23 +258,19 @@ getHashTags("Hey Parents, Surprise, Fruit Juice Is Not Fruit")
 getHashTags("Visualizing Science")
 ➞ ["#visualizing", "#science"]
 */
-
-
-
 function getHashTags(str) {
     let strArr = str
       .toLowerCase()
       .replace(/[^a-z ]/gi, "")
       .split(" ")
-      .sort((a, b) => b.length - a.length)
-      .map((word) => "#" + word);
-    return strArr.splice(0, 3);
+      .sort((a, b) => b.length - a.length);
+    return strArr.splice(0, 3).map((word) => "#" + word);
 }
 console.log("Top 3 longest words of a newspaper headline")
 console.log(getHashTags("How the Avocado Became the Fruit of the Global Trade"));
 console.log(getHashTags("Why You Will Probably Pay More for Your Christmas Tree This Year"));
 console.log(getHashTags("Hey Parents, Surprise, Fruit Juice Is Not Fruit"));
-
+console.log(getHashTags("Visualizing Science"));
 
 
 /*
@@ -284,14 +282,13 @@ reverseOdd("Make sure uoy only esrever sdrow of ddo length")
 ➞ "Make sure you only reverse words of odd length"
 */
 
-
 function reverseOdd(str) {
     return str.split(" ").map(word =>
       word.length % 2 === 1
         ? word
             .split("")
             .reverse()
-            .join(" ")
+            .join("")
         : word
     ).join(" ");
 }
@@ -299,3 +296,4 @@ console.log("Reverse the words which have odd length");
 console.log(reverseOdd("Bananas"));
 console.log(reverseOdd("One two three four"));
 console.log(reverseOdd("Make sure uoy only esrever sdrow of ddo length"));
+
