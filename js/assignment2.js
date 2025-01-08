@@ -16,9 +16,9 @@ function findMissingLetter(array) {
       }
     }
 }
-console.log("Find the missing letter");
-console.log(findMissingLetter(['a','b','c','d','f']));
-console.log(findMissingLetter(['O','Q','R','S']));
+// console.log("Find the missing letter");
+// console.log(findMissingLetter(['a','b','c','d','f']));
+// console.log(findMissingLetter(['O','Q','R','S']));
 
 
 /*
@@ -43,13 +43,23 @@ overTime([13.25, 15, 30, 1.5]) ➞ "$52.50"
     • From 17 to 18 is overtime, so 1 * 30 * 1.8 = 54
     • 30 + 54 = $84.00
 */
-
 function overTime(dayLog){
+    let workingDayStart = 9;
+    let workingDayEnd = 17;
+
     let startTime = dayLog[0];
     let endTime = dayLog[1];
+    let hourlyRate = dayLog[2];
+    let overtimeMultiplier = dayLog[3];
 
-    let totalhour = endTime - startTime;
-    console.log(totalhour);
+    let regularHoursWorked =(endTime >= workingDayEnd) ? workingDayEnd - startTime : endTime - startTime;
+    let overtimeWorked = (endTime > workingDayEnd) ? endTime - workingDayEnd : 0;
+
+    let dailyEarning = (regularHoursWorked * hourlyRate) + (overtimeWorked * (hourlyRate*overtimeMultiplier));
+    return "$"+dailyEarning.toFixed(2);
 
 }
 console.log(overTime([9, 17, 30, 1.5]));
+console.log(overTime([16, 18, 30, 1.8]));
+console.log(overTime([13.25, 15, 30, 1.5]));
+
