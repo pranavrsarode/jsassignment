@@ -158,4 +158,39 @@ console.log(maxItems(["$1", "$1", "$2"], "$3"));
 console.log(maxItems(["$10", "$7", "$2", "$60"], "$20"));
 console.log(maxItems(["$15", "$5", "$30", "$30", "$10"], "$2"));
 
+/*
+5. Find All Digits
+Taking each four digit number of an array in turn, return the number that you are on when all of the digits 0-9 have been discovered. If not all of the digits can be found, return "Missing digits!".
+Examples
+findAllDigits([5175, 4538, 2926, 5057, 6401, 4376, 2280, 6137, 8798, 9083]) ➞ 5057
+// digits found:  517-  4-38  29-6  -0
+findAllDigits([5719, 7218, 3989, 8161, 2676, 3847, 6896, 3370, 2363, 1381]) ➞ 3370
+// digits found:  5719  -2-8  3---  --6-  ----  --4-  ----  ---0
+findAllDigits([4883, 3876, 7769, 9846, 9546, 9634, 9696, 2832, 6822, 6868]) ➞ "Missing digits!"
+// digits found:  48-3  --76  ---9  ----  -5--  ----  ----  2---
+// 0 and 1 are missing
+Notes
+The digits can be discovered in any order.
+ */
 
+function findAllDigits(numberArray){
+    let digitSet = new Set();
+    let noWhenAllDigitsDiscovered = 0;
+    numberArray.forEach(number => {
+        let digitsInNumber = number.toString()
+        .split("")
+        .map(Number);
+        digitsInNumber.forEach(digit => {
+            digitSet.add(digit);
+        });
+        if(digitSet.size === 10 && noWhenAllDigitsDiscovered === 0){
+            noWhenAllDigitsDiscovered = number;
+            return;
+        }
+    });
+    return noWhenAllDigitsDiscovered?noWhenAllDigitsDiscovered:"Missing digits!";
+}
+
+console.log(findAllDigits([5175, 4538, 2926, 5057, 6401, 4376, 2280, 6137, 8798, 9083]));
+console.log(findAllDigits([5719, 7218, 3989, 8161, 2676, 3847, 6896, 3370, 2363, 1381]));
+console.log(findAllDigits([4883, 3876, 7769, 9846, 9546, 9634, 9696, 2832, 6822, 6868]));
